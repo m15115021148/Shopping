@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#45C6C2</color>
+    <color name="colorPrimaryDark">#45C6C2</color>
+    <color name="colorAccent">#7BDEDE</color>
+    <color name="activity_background">#f7f7f7</color>
+    <color name="gray">#888888</color>
+    <color name="gray_background">#eeeeee</color>
+    <color name="gray_31">#313343</color>
+    <color name="gray_31_transparent">#88313343</color>
+    <color name="gray_33">#333333</color>
+    <color name="gray_66">#666666</color>
+    <color name="gray_70">#707070</color>
+    <color name="gray_8a">#8a8a8a</color>
+    <color name="gray_99">#999999</color>
+    <color name="gray_d9">#d9d9d9</color>
+    <color name="gray_858a">#00858a</color>
+    <color name="gray_bababf">#BABABF</color>
+    <color name="gray_c2">#c2c2c2</color>
+    <color name="gray_cc">#cccccc</color>
+    <color name="gray_d3">#d3d3d3</color>
+    <color name="gray_e3">#EFEFEF</color>
+    <color name="gray_eef">#EEF1F6</color>
+    <color name="gray_e6">#F6F7F7</color>
+    <color name="gray_ee">#f8f8f8</color>
+    <color name="gray_ef">#EFF0F7</color>
+    <color name="white">#ffffffff</color>
+    <color name="alpha_50_white">#80ffffff</color>
+    <color name="alpha_20_white">#33ffffff</color>
+    <color name="black">#000000</color>
+    <color name="alpha_15_black">#26000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="text_color">#666666</color>
+    <color name="hint_color">#BCBCBC</color>
+    <color name="gradient_start">#0DA4BE</color>
+    <color name="gradient_end">#32F1C7</color>
+    <color name="agree_protocol">#13B3D6</color>
+    <color name="gray_traspant">#66d3d3d3</color>
+    <color name="red">#ff0000</color>
+    <color name="input_text_color">#b5b8bf</color>
+    <color name="middle_fill_button_start_color">#ff6a6a</color>
+    <color name="middle_fill_button_end_color">#ffa800</color>
+    <color name="slide_side_black">#313343</color>
+    <color name="progress_pic">#6F717C</color>
+    <color name="gray_b3">#b3b3b3</color>
+    <color name="text_color_yellow">#FFD100</color>
+    <color name="excellent_gradient_start">#2d8be3</color>
+    <color name="excellent_gradient_start_alpha_10">#192d8be3</color>
+    <color name="excellent_gradient_end">#0cc9d1</color>
+    <color name="excellent_gradient_end_alpha_10">#190cc9d1</color>
+    <color name="good_gradient_start">#01ad78</color>
+    <color name="good_gradient_start_alpha_10">#1901ad78</color>
+    <color name="good_gradient_end">#24e65d</color>
+    <color name="good_gradient_end_alpha_10">#1924e65d</color>
+    <color name="secondary_gradient_start">#83c510</color>
+    <color name="secondary_gradient_start_alpha_10">#1983c510</color>
+    <color name="secondary_gradient_end">#c0e31d</color>
+    <color name="secondary_gradient_end_alpha_10">#19c0e31d</color>
+    <color name="bad_gradient_start">#e68627</color>
+    <color name="bad_gradient_start_alpha_10">#19e68627</color>
+    <color name="bad_gradient_end">#e6ad00</color>
+    <color name="bad_gradient_end_alpha_10">#19e6ad00</color>
+    <color name="danger_gradient_start">#f64848</color>
+    <color name="danger_gradient_start_alpha_10">#19f64848</color>
+    <color name="danger_gradient_end">#ff7071</color>
+    <color name="danger_gradient_end_alpha_10">#19ff7071</color>
+    <color name="drawable_default_bg">#19313343</color>
+    <color name="alpha_30_white">#4DFFFFFF</color>
+    <color name="guide">#EFEFEF</color>
+    <color name="gray_e5">#E5E8EE</color>
+    <color name="alert_prompt">#F8B551</color>
+    <color name="alert_more">#FFD515</color>
+    <color name="alert_exceed_normal">#32B16C</color>
+    <color name="alert_exceed_low">#8FC320</color>
+    <color name="alert_exceed_mid">#F39801</color>
+    <color name="alert_exceed_high">#ff0000</color>
+    <color name="map_low">#2EB0E3</color>
+    <color name="map_mid1">#32B16C</color>
+    <color name="map_mid2">#8FC320</color>
+    <color name="map_mid">#FFA800</color>
+    <color name="map_high">#FF6A6A</color>
+    <color name="gradient_red_start">#FF5353</color>
+    <color name="gradient_red_end">#FF9E21</color>
+    <color name="light_color">#B5B8BF</color>
+    <color name="dark_color">#333333</color>
+    <color name="popup_window_color">#D4313343</color>
+    <color name="ui_middle_button_gradient_start">#0ea5be</color>
+    <color name="ui_middle_button_gradient_end">#32f1c7</color>
+    <color name="prompt_text_bg_color">#CCF6CA71</color>
+    <color name="black_alpha_24">#3F000000</color>
+    <color name="black_alpha_30">#4D000000</color>
+    <color name="speed_common">#F0F0F0</color>
+    <color name="fence_danger_area">#E47474</color>
+    <color name="ibs_pian_gao">#FB9152</color>
+    <color name="ibs_biao_zhun">#AED759</color>
+    <color name="ibs_pian_di">#98C7FF</color>
+
+    <color name="text_gray_tips">#80808c</color>
+    <color name="text_gray_80">#808080</color>
+
+    <color name="rule_title">#00BDBF</color>
+    <color name="rule_content">#8A8A92</color>
+    <color name="divide_line">#e5e5e5</color>
+    <color name="light_blue">#55C5C7</color>
+    <color name="btn_blue">#00BFBD</color>
+
+    <color name="text_enabled_false">#E1E2E6</color>
+    <color name="view_line">#E4E4E4</color>
+    <color name="dot_orange_one">#FD8D8D</color>
+    <color name="dot_orange_two">#4A90E2</color>
+    <color name="dot_orange_three">#FCDD01</color>
+    <color name="color_view_bg">#F5F5F5</color>
+    <color name="color_da90e2">#4A90E2</color>
+    <color name="color_00BAE9">#00ade3</color>
+
+    <color name="grey_1">#F7F7F7</color>
+    <color name="grey_2">#80808C</color>
+
+    <color name="danger_1">#FCDD01</color>
+    <color name="danger_2">#FF9A1D</color>
+    <color name="color_fe4f20">#fe4f20</color>
+
+    <color name="red_net_work">#F95D5D</color>
+
+    <color name="complete_grey">#B9B9B9</color>
+
+    <color name="health_detail_1">#F9FFFF</color>
+    <color name="grey_3">#E4E4E4</color>
+    <color name="linear_start">#CDE3FF</color>
+    <color name="linear_end">#98C7FF</color>
+
+    <color name="linear_start_biaozhun">#EAFFC0</color>
+    <color name="linear_end_biaozhun">#AED759</color>
+
+    <color name="linear_start_piangao">#FFE7D8</color>
+    <color name="linear_end_piangao">#FB9152</color>
+
+    <color name="linear_start_gao">#FFDADA</color>
+    <color name="linear_end_gao">#E47474</color>
+
+</resources>
