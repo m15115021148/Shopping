@@ -5,6 +5,8 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 
 import com.geek.shopping.R;
+import com.geek.shopping.database.DBAccount;
+import com.geek.shopping.database.DBIssue;
 import com.geek.shopping.log.LogUtil;
 
 import java.io.UnsupportedEncodingException;
@@ -21,11 +23,15 @@ public class MyApplication extends Application {
     private static MyApplication instance;
     public int screenWidth = 0;
     public int screenHeight = 0;
+    public DBAccount mDbUser;
+    public DBIssue mDbIssue;
 
     @Override
     public void onCreate() {
         super.onCreate();
         initRealm();
+        mDbUser = new DBAccount(getApplicationContext());
+        mDbIssue = new DBIssue(getApplicationContext());
         getScreenSize();
     }
 

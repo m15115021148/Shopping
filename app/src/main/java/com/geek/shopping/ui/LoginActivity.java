@@ -28,6 +28,7 @@ import com.geek.shopping.util.ToastUtil;
 import butterknife.BindView;
 import io.realm.Realm;
 
+import static android.Manifest.permission.CAMERA;
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 /**
@@ -49,9 +50,6 @@ public class LoginActivity extends BaseActivity {
     @BindView(R.id.rightLayout)
     public LinearLayout mRightLayout;
 
-    private RealmUtil mRealmUtil;
-    private Realm mRealm;
-
 
     @Override
     protected int getLayoutId() {
@@ -63,7 +61,6 @@ public class LoginActivity extends BaseActivity {
         mTitle.setText(getString(R.string.login_title));
         mBack.setVisibility(View.GONE);
         mRightLayout.setOnClickListener(this);
-        initRealm();
         initRegisterView();
         populateAutoComplete();
 
@@ -93,7 +90,6 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        closeRealm();
     }
 
     private void initRegisterView(){
@@ -102,15 +98,6 @@ public class LoginActivity extends BaseActivity {
         tv.setTextSize(15);
         tv.setTextColor(getResources().getColor(R.color.white));
         mRightLayout.addView(tv);
-    }
-
-    public void initRealm(){
-        mRealmUtil = RealmUtil.getInstance();
-        mRealm = mRealmUtil.getRealm();
-    }
-
-    public void closeRealm(){
-        if (mRealmUtil != null && mRealm != null)mRealmUtil.closeRealm(mRealm);
     }
 
     private void populateAutoComplete() {
@@ -132,11 +119,11 @@ public class LoginActivity extends BaseActivity {
                         @Override
                         @TargetApi(Build.VERSION_CODES.M)
                         public void onClick(View v) {
-                            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE}, 1);
+                            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA}, 1);
                         }
                     });
         } else {
-            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE}, 1);
+            requestPermissions(new String[]{WRITE_EXTERNAL_STORAGE,CAMERA}, 1);
         }
         return false;
     }
@@ -203,13 +190,15 @@ public class LoginActivity extends BaseActivity {
     }
 
     private String getUserInfo(String phone,String password){
-        UserModel model = mRealm.where(UserModel.class).equalTo("phone", phone).findFirst();
+        UserModel model = MyApplication.getInstance().mDbUser.getUserData(phone);
+
         if (model == null){
             return "账号不存在";
         }
-        if (!model.getUserPassword().equals(MyApplication.getMD5(password))){
+        if (!model.getPassword().equals(MyApplication.getMD5(password))){
             return "密码不正确";
         }
+        ConfigUtil.USER_ID = model.getUserId();
         PreferencesUtil.setStringData(getApplicationContext(), ConfigUtil.KEY_PHONE,phone);
         PreferencesUtil.setStringData(getApplicationContext(),ConfigUtil.KEY_PASSWORD,password);
         Intent intent = new Intent(this,MainActivity.class);

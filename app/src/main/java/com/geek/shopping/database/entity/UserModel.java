@@ -2,36 +2,54 @@ package com.geek.shopping.database.entity;
 
 import java.io.Serializable;
 
-import io.realm.RealmObject;
-import io.realm.annotations.PrimaryKey;
-import io.realm.annotations.RealmClass;
 
-/**
- * Created by ${chenM} on 2019/4/15.
- */
-@RealmClass
-public class UserModel extends RealmObject implements Serializable {
-    @PrimaryKey
+public class UserModel implements Serializable {
+    private int userId;
+    private long time;
     private String phone;
-    private String userName;
-    private String userPassword;
-    private int sex;//1 man ;2 other
+    private String name;
+    private String password;
+    private int sex;//0 man ;1 other
     private String address;
 
-    public String getUserName() {
-        return userName;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+    public long getTime() {
+        return time;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getSex() {
@@ -48,13 +66,5 @@ public class UserModel extends RealmObject implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 }

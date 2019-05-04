@@ -29,9 +29,6 @@ public class RegisterActivity extends BaseActivity {
     @BindView(R.id.register)
     public TextView mRegister;
 
-    private RealmUtil mRealmUtil;
-    private Realm mRealm;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_register;
@@ -43,14 +40,11 @@ public class RegisterActivity extends BaseActivity {
         mTitle.setText(getString(R.string.login_register));
         mRegister.setOnClickListener(this);
 
-        initRealm();
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        closeRealm();
     }
 
     @Override
@@ -76,26 +70,20 @@ public class RegisterActivity extends BaseActivity {
 
     }
 
-    public void initRealm(){
-        mRealmUtil = RealmUtil.getInstance();
-        mRealm = mRealmUtil.getRealm();
-    }
-
-    public void closeRealm(){
-        if (mRealmUtil != null && mRealm != null)mRealmUtil.closeRealm(mRealm);
-    }
-
     private void saveUserInfo(String phone,String password){
-        final UserModel userModel = new UserModel();
-        userModel.setPhone(phone);
-        userModel.setUserPassword(password);
-        mRealm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                realm.copyToRealmOrUpdate(userModel);
-                ToastUtil.showShort(getApplicationContext(),"注册成功");
-                finish();
-            }
-        });
+        UserModel model = MyApplication.getInstance().mDbUser.getUserData(phone);
+
+        if (model == null){
+            UserModel m = new UserModel();
+            m.setPhone(phone);
+            m.setPassword(password);
+
+            MyApplication.getInstance().mDbUser.insert(m);
+
+            ToastUtil.showShort(getApplicationContext(),"注册成功");
+            finish();
+        }else {
+            ToastUtil.showShort(getApplicationContext(),"账号已存在");
+        }
     }
 }

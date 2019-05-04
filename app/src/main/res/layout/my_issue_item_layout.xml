@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.geek.shopping.view.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/x180"
+    android:descendantFocusability="blocksDescendants">
+
+    <LinearLayout
+        android:layout_width="@dimen/x200"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/delete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FF0000"
+            android:gravity="center"
+            android:text="删除"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingStart="@dimen/x40"
+        android:paddingEnd="@dimen/x40">
+
+        <ImageView
+            android:id="@+id/img"
+            android:layout_width="@dimen/x120"
+            android:layout_height="@dimen/x120"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@color/gray_e3" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/img"
+            android:layout_marginStart="@dimen/x20"
+            android:layout_toEndOf="@+id/img"
+            android:singleLine="true"
+            android:text="title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x35" />
+
+        <TextView
+            android:id="@+id/detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/title"
+            android:layout_alignBottom="@+id/img"
+            android:singleLine="true"
+            android:text="detail"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/x28" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/img"
+            android:layout_alignParentEnd="true"
+            android:text="2019-11-1 12:30:09"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/x24" />
+
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_e3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x2"/>
+
+    </RelativeLayout>
+
+
+</com.geek.shopping.view.SwipeLayout>

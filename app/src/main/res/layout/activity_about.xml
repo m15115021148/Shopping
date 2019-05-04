@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_e3"
+    tools:context=".ui.AboutActivity">
+
+    <include
+        layout="@layout/include_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <RelativeLayout
+        android:id="@+id/addressLayout"
+        android:background="@color/white"
+        android:paddingStart="@dimen/x40"
+        android:paddingEnd="@dimen/x40"
+        android:layout_marginTop="@dimen/x40"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x100">
+
+        <TextView
+            android:text="版本号"
+            android:textColor="@color/black"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/x30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:textColor="@color/gray"
+            android:textSize="@dimen/x28"
+            android:text="V1.0.0"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:onClick="onExit"
+        android:textColor="@color/black"
+        android:text="退出账号"
+        android:textSize="@dimen/x30"
+        android:gravity="center"
+        android:background="@drawable/shape_register_phone_bg"
+        android:layout_marginTop="@dimen/x100"
+        android:layout_marginStart="@dimen/x40"
+        android:layout_marginEnd="@dimen/x40"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x90" />
+
+</LinearLayout>

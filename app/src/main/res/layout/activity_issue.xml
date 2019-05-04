@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_e3"
+    android:orientation="vertical"
+    tools:context=".ui.IssueActivity">
+
+    <include
+        layout="@layout/include_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x120"
+                android:layout_marginTop="@dimen/x40"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/x20">
+
+                <TextView
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|start"
+                    android:text="标题"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/x30" />
+
+                <EditText
+                    android:id="@+id/issueTitle"
+                    android:hint="请输入标题"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_register_phone_bg"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/x10"
+                    android:paddingEnd="@dimen/x10"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/x30" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x120"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/x20">
+
+                <TextView
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|start"
+                    android:text="产品名称"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/x30" />
+
+                <EditText
+                    android:id="@+id/issueProductName"
+                    android:hint="请输入产品名称"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_register_phone_bg"
+                    android:inputType="text"
+                    android:paddingStart="@dimen/x10"
+                    android:paddingEnd="@dimen/x10"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/x30" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x120"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:padding="@dimen/x20">
+
+                <TextView
+                    android:layout_width="@dimen/x200"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical|start"
+                    android:text="金额"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/x30" />
+
+                <EditText
+                    android:id="@+id/issueMoney"
+                    android:hint="请输入金额"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_register_phone_bg"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="@dimen/x10"
+                    android:paddingEnd="@dimen/x10"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/x30" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/x350"
+                android:layout_marginTop="@dimen/x2"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/x20">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start"
+                    android:text="简介"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/x30" />
+
+                <EditText
+                    android:id="@+id/issueDetail"
+                    android:gravity="center_vertical|top"
+                    android:hint="请输入"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/x20"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_register_phone_bg"
+                    android:inputType="text"
+                    android:maxLines="8"
+                    android:padding="@dimen/x10"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/x30" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:padding="@dimen/x20"
+                android:background="@color/white"
+                android:id="@+id/recyclerView"
+                android:overScrollMode="never"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

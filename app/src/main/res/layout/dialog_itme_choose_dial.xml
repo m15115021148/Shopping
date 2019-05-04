@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_top"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:stateListAnimator="@null"
+        android:text="拍照"
+        android:textColor="@color/gray_66"
+        android:textSize="@dimen/text_size_16" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x1"
+        android:background="@color/gray_traspant" />
+
+    <Button
+        android:id="@+id/btn_mid"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:stateListAnimator="@null"
+        android:text="从相册选取"
+        android:textColor="@color/gray_66"
+        android:textSize="@dimen/text_size_16" />
+
+    <Button
+        android:id="@+id/btn_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/x24"
+        android:background="@color/white"
+        android:stateListAnimator="@null"
+        android:text="取消"
+        android:textColor="@color/red"
+        android:textSize="@dimen/text_size_16" />
+
+
+</LinearLayout>

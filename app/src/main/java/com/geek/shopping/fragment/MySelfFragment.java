@@ -1,10 +1,17 @@
 package com.geek.shopping.fragment;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.geek.shopping.R;
+import com.geek.shopping.application.MyApplication;
+import com.geek.shopping.config.ConfigUtil;
+import com.geek.shopping.database.entity.ProductModel;
+import com.geek.shopping.ui.AboutActivity;
+import com.geek.shopping.ui.MyIssueActivity;
+import com.geek.shopping.util.ToastUtil;
 import com.geek.shopping.view.MyImageView;
 
 import java.util.List;
@@ -41,6 +48,8 @@ public class MySelfFragment extends BaseFragment implements View.OnClickListener
         mReList.get(1).setOnClickListener(this);
         mReList.get(2).setOnClickListener(this);
         mReList.get(3).setOnClickListener(this);
+
+
     }
 
     @Override
@@ -49,21 +58,33 @@ public class MySelfFragment extends BaseFragment implements View.OnClickListener
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        List<ProductModel> list = MyApplication.getInstance().mDbIssue.getUserData(ConfigUtil.USER_ID);
+        if (list != null){
+            mIssue.setText(String.format(getString(R.string.my_self_issue_number),list.size()));
+        }
+        mOrder.setText(String.format(getString(R.string.my_self_order_number),0));
+    }
+
+    @Override
     public void onClick(View v) {
         if (v == mHeader){
 
         }
         if (v == mReList.get(0)){
-
+            Intent intent = new Intent(getContext(), MyIssueActivity.class);
+            startActivity(intent);
         }
         if (v == mReList.get(1)){
-
+            ToastUtil.showShort(getContext(),"开发中");
         }
         if (v == mReList.get(2)){
-
+            ToastUtil.showShort(getContext(),"开发中");
         }
         if (v == mReList.get(3)){
-
+            Intent intent = new Intent(getContext(), AboutActivity.class);
+            startActivity(intent);
         }
     }
 }

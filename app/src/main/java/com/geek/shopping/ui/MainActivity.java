@@ -1,9 +1,13 @@
 package com.geek.shopping.ui;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
@@ -21,6 +25,7 @@ import butterknife.BindView;
  * 首页
  */
 public class MainActivity extends BaseActivity {
+    public static MainActivity mContext;
     @BindView(R.id.navigation)
     public BottomNavigationView mNavigation;
     private Fragment currentFragment;//当前视图
@@ -29,6 +34,8 @@ public class MainActivity extends BaseActivity {
     private IssueFragment mIssueFragment;
     private MySelfFragment mMySelfFragment;
 
+    private String[] strs = {Manifest.permission.CAMERA};
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_main;
@@ -36,7 +43,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
+        mContext = this;
         mNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         //init view
@@ -44,6 +51,8 @@ public class MainActivity extends BaseActivity {
         mMySelfFragment = new MySelfFragment();
 
         switchFragment(mIssueFragment);
+
+        requestPermission();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -105,5 +114,12 @@ public class MainActivity extends BaseActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    private void requestPermission(){
+        int checkCallPhonePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if(checkCallPhonePermission != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,strs,1);
+        }
     }
 }
