@@ -6,7 +6,6 @@
     android:gravity="center_horizontal"
     android:background="@color/white"
     android:orientation="vertical"
-
     tools:context=".ui.LoginActivity">
 
     <include
@@ -43,7 +42,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="@string/prompt_email"
-                        android:inputType="textEmailAddress"
+                        android:inputType="phone"
                         android:maxLines="1"
                         android:singleLine="true" />
 
@@ -67,13 +66,17 @@
 
                 </android.support.design.widget.TextInputLayout>
 
-                <Button
+                <TextView
+                    android:textSize="@dimen/x32"
+                    android:padding="@dimen/x20"
+                    android:gravity="center"
+                    android:textColor="@color/white"
                     android:id="@+id/email_sign_in_button"
-                    style="?android:textAppearanceSmall"
+                    android:background="@drawable/shape_issue_toolbar_bg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/action_sign_in"
+                    android:layout_marginTop="@dimen/x60"
+                    android:text="@string/login_title"
                     android:textStyle="bold" />
 
             </LinearLayout>

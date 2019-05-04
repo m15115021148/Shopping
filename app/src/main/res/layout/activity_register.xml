@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    tools:context=".ui.RegisterActivity">
+
+    <include
+        layout="@layout/include_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x90"
+        android:layout_marginStart="@dimen/x40"
+        android:layout_marginTop="@dimen/x90"
+        android:layout_marginEnd="@dimen/x40"
+        android:background="@drawable/shape_register_phone_bg">
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/register_phone_hint"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:paddingStart="@dimen/x10"
+            android:paddingEnd="@dimen/x10"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x30" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x90"
+        android:layout_margin="@dimen/x40">
+
+        <EditText
+            android:id="@+id/code"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/x40"
+            android:layout_weight="1"
+            android:background="@drawable/shape_register_phone_bg"
+            android:hint="@string/register_code_hint"
+            android:inputType="number"
+            android:maxLength="8"
+            android:paddingStart="@dimen/x10"
+            android:paddingEnd="@dimen/x10"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x30" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/x100"
+            android:layout_weight="1"
+            android:background="@drawable/shape_issue_toolbar_bg"
+            android:gravity="center"
+            android:text="@string/register_get_code"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x32" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x90"
+        android:layout_marginStart="@dimen/x40"
+        android:layout_marginEnd="@dimen/x40"
+        android:background="@drawable/shape_register_phone_bg">
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/register_password_hint"
+            android:inputType="textPassword"
+            android:maxLength="11"
+            android:paddingStart="@dimen/x10"
+            android:paddingEnd="@dimen/x10"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x30" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x90"
+        android:layout_marginStart="@dimen/x40"
+        android:layout_marginTop="@dimen/x90"
+        android:layout_marginEnd="@dimen/x40"
+        android:background="@drawable/shape_issue_toolbar_bg"
+        android:gravity="center"
+        android:text="@string/login_register"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x35" />
+
+</LinearLayout>

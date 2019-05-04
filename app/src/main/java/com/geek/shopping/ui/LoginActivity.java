@@ -1,8 +1,7 @@
 package com.geek.shopping.ui;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -16,11 +15,17 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.geek.shopping.R;
+import com.geek.shopping.application.MyApplication;
+import com.geek.shopping.database.RealmUtil;
+import com.geek.shopping.database.entity.UserModel;
+import com.geek.shopping.util.ToastUtil;
 
 import butterknife.BindView;
+import io.realm.Realm;
 
 import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
@@ -35,7 +40,16 @@ public class LoginActivity extends BaseActivity {
     @BindView(R.id.login_form)
     public View mLoginFormView;
     @BindView(R.id.email_sign_in_button)
-    public Button mEmailSignInButton;
+    public TextView mEmailSignInButton;
+    @BindView(R.id.title)
+    public TextView mTitle;
+    @BindView(R.id.back)
+    public LinearLayout mBack;
+    @BindView(R.id.rightLayout)
+    public LinearLayout mRightLayout;
+
+    private RealmUtil mRealmUtil;
+    private Realm mRealm;
 
 
     @Override
@@ -45,6 +59,11 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        mTitle.setText(getString(R.string.login_title));
+        mBack.setVisibility(View.GONE);
+        mRightLayout.setOnClickListener(this);
+        initRealm();
+        initRegisterView();
         populateAutoComplete();
 
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -65,6 +84,29 @@ public class LoginActivity extends BaseActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        closeRealm();
+    }
+
+    private void initRegisterView(){
+        TextView tv = new TextView(this);
+        tv.setText(getString(R.string.login_register));
+        tv.setTextSize(15);
+        tv.setTextColor(getResources().getColor(R.color.white));
+        mRightLayout.addView(tv);
+    }
+
+    public void initRealm(){
+        mRealmUtil = RealmUtil.getInstance();
+        mRealm = mRealmUtil.getRealm();
+    }
+
+    public void closeRealm(){
+        if (mRealmUtil != null && mRealm != null)mRealmUtil.closeRealm(mRealm);
     }
 
     private void populateAutoComplete() {
@@ -138,13 +180,35 @@ public class LoginActivity extends BaseActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
+            String data = getUserInfo(email, MyApplication.getMD5(password));
 
+            ToastUtil.showShort(getApplicationContext(),data);
         }
     }
 
     private boolean isPasswordValid(String password) {
-        return password.length() > 4;
+        return password.length() > 5;
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v == mRightLayout){
+            Intent intent = new Intent(this,RegisterActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private String getUserInfo(String phone,String password){
+        UserModel model = mRealm.where(UserModel.class).equalTo("phone", phone).findFirst();
+        if (model == null){
+            return "账号不存在";
+        }
+        if (!model.getUserPassword().equals(password)){
+            return "密码不正确";
+        }
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+        return "登陆成功";
+    }
 }
 

@@ -12,20 +12,11 @@ import io.realm.annotations.RealmClass;
 @RealmClass
 public class UserModel extends RealmObject implements Serializable {
     @PrimaryKey
-    private int userId;
+    private String phone;
     private String userName;
     private String userPassword;
     private int sex;//1 man ;2 other
-    private String telPhone;
     private String address;
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public String getUserName() {
         return userName;
@@ -51,19 +42,19 @@ public class UserModel extends RealmObject implements Serializable {
         this.sex = sex;
     }
 
-    public String getTelPhone() {
-        return telPhone;
-    }
-
-    public void setTelPhone(String telPhone) {
-        this.telPhone = telPhone;
-    }
-
     public String getAddress() {
         return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
