@@ -5,6 +5,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
@@ -12,6 +13,7 @@ import com.geek.shopping.R;
 import com.geek.shopping.fragment.DataFragment;
 import com.geek.shopping.fragment.IssueFragment;
 import com.geek.shopping.fragment.MySelfFragment;
+import com.geek.shopping.util.ToastUtil;
 
 import butterknife.BindView;
 
@@ -25,7 +27,6 @@ public class MainActivity extends BaseActivity {
     private FragmentTransaction fragmentTransaction;//事务
 
     private IssueFragment mIssueFragment;
-    private DataFragment mDataFragment;
     private MySelfFragment mMySelfFragment;
 
     @Override
@@ -40,7 +41,6 @@ public class MainActivity extends BaseActivity {
 
         //init view
         mIssueFragment = new IssueFragment();
-        mDataFragment = new DataFragment();
         mMySelfFragment = new MySelfFragment();
 
         switchFragment(mIssueFragment);
@@ -56,9 +56,6 @@ public class MainActivity extends BaseActivity {
                     switchFragment(mIssueFragment);
                     return true;
                 case R.id.navigation_dashboard:
-                    switchFragment(mDataFragment);
-                    return true;
-                case R.id.navigation_notifications:
                     switchFragment(mMySelfFragment);
                     return true;
             }
@@ -94,4 +91,19 @@ public class MainActivity extends BaseActivity {
         fragmentTransaction = null;
     }
 
+    private long mExitTime;
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((System.currentTimeMillis() - mExitTime) > 2000) {
+                ToastUtil.showShort(getApplicationContext(), "再按一次退出应用");
+                mExitTime = System.currentTimeMillis();
+            } else {
+                exitApp();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

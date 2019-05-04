@@ -13,15 +13,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.geek.shopping.R;
 import com.geek.shopping.application.MyApplication;
+import com.geek.shopping.config.ConfigUtil;
 import com.geek.shopping.database.RealmUtil;
 import com.geek.shopping.database.entity.UserModel;
+import com.geek.shopping.util.PreferencesUtil;
 import com.geek.shopping.util.ToastUtil;
 
 import butterknife.BindView;
@@ -65,6 +66,9 @@ public class LoginActivity extends BaseActivity {
         initRealm();
         initRegisterView();
         populateAutoComplete();
+
+        String tel = PreferencesUtil.getStringData(getApplicationContext(), ConfigUtil.KEY_PHONE);
+        mEmailView.setText(tel);
 
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -180,7 +184,7 @@ public class LoginActivity extends BaseActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            String data = getUserInfo(email, MyApplication.getMD5(password));
+            String data = getUserInfo(email, password);
 
             ToastUtil.showShort(getApplicationContext(),data);
         }
@@ -203,11 +207,14 @@ public class LoginActivity extends BaseActivity {
         if (model == null){
             return "账号不存在";
         }
-        if (!model.getUserPassword().equals(password)){
+        if (!model.getUserPassword().equals(MyApplication.getMD5(password))){
             return "密码不正确";
         }
+        PreferencesUtil.setStringData(getApplicationContext(), ConfigUtil.KEY_PHONE,phone);
+        PreferencesUtil.setStringData(getApplicationContext(),ConfigUtil.KEY_PASSWORD,password);
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
+        finish();
         return "登陆成功";
     }
 }
