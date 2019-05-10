@@ -40,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
     //创建数据表
     private static final String CREATE_ACCOUNT_TABLE = "create table "
             + USER
-            + " (userId integer primary key autoincrement,time long,phone varchar2(20),password varchar2(20),address varchar2(100),name varchar2(10),sex integer)";
+            + " (userId integer primary key autoincrement,time long,phone varchar2(20),password varchar2(20),address varchar2(100),name varchar2(10),sex integer,header varchar2(50))";
 
     //创建数据表
     private static final String CREATE_ISSUE_TABLE = "create table "

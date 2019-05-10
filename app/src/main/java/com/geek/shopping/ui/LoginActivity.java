@@ -201,7 +201,8 @@ public class LoginActivity extends BaseActivity {
         ConfigUtil.USER_ID = model.getUserId();
         PreferencesUtil.setStringData(getApplicationContext(), ConfigUtil.KEY_PHONE,phone);
         PreferencesUtil.setStringData(getApplicationContext(),ConfigUtil.KEY_PASSWORD,password);
-        Intent intent = new Intent(this,MainActivity.class);
+        PreferencesUtil.isFirst(getApplicationContext(),ConfigUtil.KEY_LOGIN_FIRST,true);
+        Intent intent = new Intent(this,HomePagerActivity.class);
         startActivity(intent);
         finish();
         return "登陆成功";

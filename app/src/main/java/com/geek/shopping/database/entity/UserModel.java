@@ -11,6 +11,15 @@ public class UserModel implements Serializable {
     private String password;
     private int sex;//0 man ;1 other
     private String address;
+    private String headerImg;
+
+    public String getHeaderImg() {
+        return headerImg;
+    }
+
+    public void setHeaderImg(String headerImg) {
+        this.headerImg = headerImg;
+    }
 
     public int getUserId() {
         return userId;

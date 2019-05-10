@@ -12,6 +12,8 @@ import com.geek.shopping.database.RealmUtil;
 import com.geek.shopping.database.entity.UserModel;
 import com.geek.shopping.util.ToastUtil;
 
+import java.util.Date;
+
 import butterknife.BindView;
 import io.realm.Realm;
 
@@ -77,6 +79,11 @@ public class RegisterActivity extends BaseActivity {
             UserModel m = new UserModel();
             m.setPhone(phone);
             m.setPassword(password);
+            m.setHeaderImg("");
+            m.setSex(0);
+            m.setName("");
+            m.setAddress("");
+            m.setTime(new Date().getTime());
 
             MyApplication.getInstance().mDbUser.insert(m);
 
