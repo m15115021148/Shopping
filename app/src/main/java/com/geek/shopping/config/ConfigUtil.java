@@ -10,4 +10,6 @@ public class ConfigUtil {
     public static final String KEY_PHONE = "user_phone";
     public static final String KEY_PASSWORD = "user_password";
 
+    public static final String KEY_LOGIN_FIRST = "login_first";
+
 }

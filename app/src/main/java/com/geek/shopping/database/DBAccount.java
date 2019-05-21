@@ -21,6 +21,7 @@ public class DBAccount {
     public static final String ADDRESS = "address";
     public static final String NAME = "name";
     public static final String SEX = "sex";
+    public static final String HEADER = "header";
 
     public DBAccount(Context context) {
         dbHelper = DBHelper.getNewInstanceDBHelper(context);
@@ -37,8 +38,9 @@ public class DBAccount {
         values.put(TIME, model.getTime());
         values.put(PASSWORD, model.getPassword());
         values.put(ADDRESS, model.getAddress());
-        values.put(NAME, model.getTime());
+        values.put(NAME, model.getName());
         values.put(SEX, model.getSex());
+        values.put(HEADER,model.getHeaderImg());
         db.insert(DBHelper.USER, null, values);
         Log.i("result", "插入成功");
     }
@@ -61,6 +63,42 @@ public class DBAccount {
         db.execSQL(sql);
     }
 
+    public void updateUserHeader(String phone,String headerImg){
+        String sql = "update "+DBHelper.USER+" set header="+headerImg + " where phone=" + phone + ";";
+
+        ContentValues values = new ContentValues();
+        values.put("header", headerImg);
+
+        db.update(DBHelper.USER, values, "phone=?", new String[]{phone});
+
+//        db.execSQL(sql);
+
+    }
+
+    public void updateUserSex(String phone,int sex){
+        String sql = "update "+DBHelper.USER+" set sex="+sex + " where phone=" + phone + ";";
+
+        ContentValues values = new ContentValues();
+        values.put("sex", sex);
+
+        db.update(DBHelper.USER, values, "phone=?", new String[]{phone});
+
+//        db.execSQL(sql);
+
+    }
+
+    public void updateUserNickName(String phone,String name){
+        String sql = "update "+DBHelper.USER+" set name="+name + " where phone=" + phone + ";";
+
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+
+        db.update(DBHelper.USER, values, "phone=?", new String[]{phone});
+
+//        db.execSQL(sql);
+
+    }
+
     /**
      * 查询数据
      * @return
@@ -80,6 +118,7 @@ public class DBAccount {
             String address = cursor.getString(cursor.getColumnIndex(ADDRESS));
             String name = cursor.getString(cursor.getColumnIndex(NAME));
             int sex = cursor.getInt(cursor.getColumnIndex(SEX));
+            String header = cursor.getString(cursor.getColumnIndex(HEADER));
 
             UserModel model = new UserModel();
 
@@ -90,6 +129,7 @@ public class DBAccount {
             model.setAddress(address);
             model.setName(name);
             model.setSex(sex);
+            model.setHeaderImg(header);
 
             return model;
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Shopping</string>
+    <string name="app_name">养生</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -122,4 +122,83 @@
 
     <string name="my_self_issue_number">我的发布：%d</string>
     <string name="my_self_order_number">我的订单：%d</string>
+
+    <string-array name="TabTitle">
+        <item>季节</item>
+        <item>时辰</item>
+        <item>年龄</item>
+    </string-array>
+
+
+    <string-array name="homePagerTitle">
+        <item>春季</item>
+        <item>夏季</item>
+        <item>秋季</item>
+        <item>冬季</item>
+    </string-array>
+
+    <string-array name="homePagerDes">
+        <item>@string/home_des_1</item>
+        <item>@string/home_des_2</item>
+        <item>@string/home_des_3</item>
+        <item>@string/home_des_4</item>
+    </string-array>
+
+    <string-array name="homePagerTitle1">
+        <item>子时</item>
+        <item>丑时</item>
+        <item>寅时</item>
+        <item>卯时</item>
+        <item>辰时</item>
+        <item>巳时</item>
+        <item>午时</item>
+        <item>未时</item>
+        <item>申时</item>
+        <item>酉时</item>
+        <item>戌时</item>
+        <item>亥时</item>
+    </string-array>
+
+    <string-array name="homePagerDes1">
+        <item>@string/home_time_1</item>
+        <item>@string/home_time_2</item>
+        <item>@string/home_time_3</item>
+        <item>@string/home_time_4</item>
+        <item>@string/home_time_5</item>
+        <item>@string/home_time_6</item>
+        <item>@string/home_time_7</item>
+        <item>@string/home_time_8</item>
+        <item>@string/home_time_9</item>
+        <item>@string/home_time_10</item>
+        <item>@string/home_time_11</item>
+        <item>@string/home_time_12</item>
+    </string-array>
+
+    <string-array name="homePagerTitle2">
+        <item>10岁</item>
+        <item>20岁</item>
+        <item>30岁</item>
+        <item>40岁</item>
+        <item>50岁</item>
+        <item>60岁</item>
+        <item>70岁</item>
+        <item>80岁</item>
+        <item>90岁</item>
+        <item>100岁</item>
+    </string-array>
+
+    <string-array name="homePagerDes2">
+        <item>@string/home_age_1</item>
+        <item>@string/home_age_2</item>
+        <item>@string/home_age_3</item>
+        <item>@string/home_age_4</item>
+        <item>@string/home_age_5</item>
+        <item>@string/home_age_6</item>
+        <item>@string/home_age_7</item>
+        <item>@string/home_age_8</item>
+        <item>@string/home_age_9</item>
+        <item>@string/home_age_10</item>
+    </string-array>
+
+
 </resources>
