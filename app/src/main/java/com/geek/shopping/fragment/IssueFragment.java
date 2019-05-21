@@ -1,7 +1,6 @@
 package com.geek.shopping.fragment;
 
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -10,9 +9,7 @@ import com.geek.shopping.adapter.IssueAdapter;
 import com.geek.shopping.application.MyApplication;
 import com.geek.shopping.config.ConfigUtil;
 import com.geek.shopping.database.entity.ProductModel;
-import com.geek.shopping.view.BannerIndicator;
 import com.geek.shopping.view.GlideImageLoader;
-import com.geek.shopping.view.SmoothLinearLayoutManager;
 import com.geek.shopping.view.recyclerview.HeaderAndFooterWrapper;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -20,16 +17,13 @@ import com.youth.banner.Transformer;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 
 /**
  * 发布
  */
-public class IssueFragment extends BaseFragment{
+public class IssueFragment extends BaseFragment implements IssueAdapter.OnIssueCallBack {
     @BindView(R.id.recyclerView)
     public RecyclerView mRecyclerView;
     private IssueAdapter mAdapter;
@@ -46,7 +40,7 @@ public class IssueFragment extends BaseFragment{
     protected void initData() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        mAdapter = new IssueAdapter();
+        mAdapter = new IssueAdapter(this);
         mWrapper = new HeaderAndFooterWrapper(mAdapter);
 
         initBanner();
@@ -112,4 +106,8 @@ public class IssueFragment extends BaseFragment{
         return l;
     }
 
+    @Override
+    public void onClickListener(int position) {
+
+    }
 }

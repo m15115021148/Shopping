@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.geek.shopping.R;
@@ -25,6 +26,15 @@ import butterknife.ButterKnife;
 public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.Holder>{
     private List<ProductModel> mList = new ArrayList<>();
     private DecimalFormat df = new DecimalFormat("0.#");
+    private OnIssueCallBack mCallBack;
+
+    public IssueAdapter(OnIssueCallBack callBack){
+        this.mCallBack = callBack;
+    }
+
+    public interface OnIssueCallBack{
+        void onClickListener(int position);
+    }
 
     public void setData(List<ProductModel> list){
         this.mList = list;
@@ -66,6 +76,8 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.Holder>{
         public TextView mComment;
         @BindView(R.id.shopName)
         public TextView mShopName;
+        @BindView(R.id.layout)
+        public RelativeLayout mLayout;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
@@ -73,7 +85,7 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.Holder>{
             mItemView = itemView;
         }
 
-        public void initData(int position){
+        public void initData(final int position){
             ProductModel model = mList.get(position);
 
             String[] split = model.getImg().split(";");
@@ -87,6 +99,13 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.Holder>{
             mName.setText(String.format("%s %s",model.getProductName(),model.getDetail()));
 
             mMoney.setText(String.format("¥%s",df.format(model.getMoney())));
+
+            mLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mCallBack != null)mCallBack.onClickListener(position);
+                }
+            });
         }
 
     }
