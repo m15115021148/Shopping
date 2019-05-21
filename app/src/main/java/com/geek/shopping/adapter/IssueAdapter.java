@@ -12,6 +12,7 @@ import com.geek.shopping.database.entity.ProductModel;
 import com.geek.shopping.util.ImageUtil;
 import com.geek.shopping.view.MyImageView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ import butterknife.ButterKnife;
  */
 public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.Holder>{
     private List<ProductModel> mList = new ArrayList<>();
+    private DecimalFormat df = new DecimalFormat("0.#");
 
     public void setData(List<ProductModel> list){
         this.mList = list;
@@ -54,8 +56,16 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.Holder>{
         private View mItemView;
         @BindView(R.id.img)
         public MyImageView mImg;
-        @BindView(R.id.detail)
-        public TextView mDetail;
+        @BindView(R.id.name)
+        public TextView mName;
+        @BindView(R.id.money)
+        public TextView mMoney;
+        @BindView(R.id.price)
+        public TextView mPrice;
+        @BindView(R.id.comment)
+        public TextView mComment;
+        @BindView(R.id.shopName)
+        public TextView mShopName;
 
         public Holder(@NonNull View itemView) {
             super(itemView);
@@ -72,7 +82,11 @@ public class IssueAdapter extends RecyclerView.Adapter<IssueAdapter.Holder>{
             }else {
                 mImg.setBackgroundResource(R.drawable.head_defaut);
             }
-            mDetail.setText(model.getDetail());
+
+
+            mName.setText(String.format("%s %s",model.getProductName(),model.getDetail()));
+
+            mMoney.setText(String.format("¥%s",df.format(model.getMoney())));
         }
 
     }

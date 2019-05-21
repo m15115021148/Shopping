@@ -3,6 +3,7 @@ package com.geek.shopping.fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.geek.shopping.R;
 import com.geek.shopping.adapter.IssueAdapter;
@@ -10,8 +11,14 @@ import com.geek.shopping.application.MyApplication;
 import com.geek.shopping.config.ConfigUtil;
 import com.geek.shopping.database.entity.ProductModel;
 import com.geek.shopping.view.BannerIndicator;
+import com.geek.shopping.view.GlideImageLoader;
 import com.geek.shopping.view.SmoothLinearLayoutManager;
+import com.geek.shopping.view.recyclerview.HeaderAndFooterWrapper;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -24,12 +31,11 @@ import butterknife.BindView;
  */
 public class IssueFragment extends BaseFragment{
     @BindView(R.id.recyclerView)
-    public RecyclerView mBanner;
-    @BindView(R.id.indicator)
-    public BannerIndicator mBannerIndicator;
+    public RecyclerView mRecyclerView;
+    private IssueAdapter mAdapter;
+    private HeaderAndFooterWrapper mWrapper;
+    private Banner mBanner;
 
-    private IssueAdapter mBannerAdapter;
-    private SmoothLinearLayoutManager layoutManager;
 
     @Override
     protected int setContentView() {
@@ -38,54 +44,72 @@ public class IssueFragment extends BaseFragment{
 
     @Override
     protected void initData() {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        mAdapter = new IssueAdapter();
+        mWrapper = new HeaderAndFooterWrapper(mAdapter);
+
         initBanner();
     }
 
     @Override
     protected void startLoad() {
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         List<ProductModel> list = MyApplication.getInstance().mDbIssue.getUserData(ConfigUtil.USER_ID);
 
-        if (list != null && list.size()>0){
-            mBannerAdapter.setData(list);
-            mBannerIndicator.setNumber(list.size());
+        if (mBanner != null){
+            mBanner.setImages(getBannerData(list));
+            mBanner.start();
+        }
+        mAdapter.setData(list);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mBanner != null){
+            mBanner.stopAutoPlay();
         }
     }
 
     private void initBanner(){
-        mBannerAdapter = new IssueAdapter();
 
-        layoutManager = new SmoothLinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        mBanner.setLayoutManager(layoutManager);
-        mBanner.setHasFixedSize(true);
-        mBanner.setAdapter(mBannerAdapter);
+        View view = getLayoutInflater().inflate(R.layout.issue_header_layout,null);
 
-        PagerSnapHelper snapHelper = new PagerSnapHelper();
-        snapHelper.attachToRecyclerView(mBanner);
+        mBanner = view.findViewById(R.id.banner);
 
-        mBanner.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    int i = layoutManager.findFirstVisibleItemPosition() % mBannerAdapter.getData().size();
-                    mBannerIndicator.setPosition(i);
-                }
+        mBanner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+        mBanner.setImageLoader(new GlideImageLoader());
+        mBanner.setBannerAnimation(Transformer.ZoomIn);
+        mBanner.isAutoPlay(true);
+        mBanner.setDelayTime(3000);
+        mBanner.setIndicatorGravity(BannerConfig.CENTER);
+
+        mWrapper.addHeaderView(view);
+
+        mRecyclerView.setAdapter(mWrapper);
+
+
+    }
+
+    private List<String> getBannerData(List<ProductModel> list){
+        List<String> l = new ArrayList<>();
+        for (ProductModel model:list){
+            String[] split = model.getImg().split(";");
+            if (split.length>0){
+                l.add(split[0]);
             }
-        });
-
-        ScheduledExecutorService scheduledExecutorService = Executors.newScheduledThreadPool(1);
-        scheduledExecutorService.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-                mBanner.smoothScrollToPosition(layoutManager.findFirstVisibleItemPosition() + 1);
-            }
-        }, 2000, 2000, TimeUnit.MILLISECONDS);
-
+        }
+        return l;
     }
 
 }

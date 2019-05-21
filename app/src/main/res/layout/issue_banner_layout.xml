@@ -1,26 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/x400"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.geek.shopping.view.MyImageView
-        android:id="@+id/img"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/detail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="@dimen/x40"
-        android:layout_marginBottom="@dimen/x80"
-        android:singleLine="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/x30" />
+        <com.geek.shopping.view.MyImageView
+            android:id="@+id/img"
+            android:layout_width="@dimen/x220"
+            android:layout_height="@dimen/x200"
+            android:scaleType="centerCrop" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/x20"
+            android:layout_marginTop="@dimen/x20"
+            android:layout_marginEnd="@dimen/x20"
+            android:layout_toEndOf="@+id/img"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x30" />
+
+
+        <TextView
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/img"
+            android:layout_marginStart="@dimen/x20"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_toEndOf="@+id/img"
+            android:singleLine="true"
+            android:text="11"
+            android:textColor="@color/red"
+            android:textSize="@dimen/x32" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/money"
+            android:layout_marginStart="@dimen/x20"
+            android:layout_toEndOf="@+id/money"
+            android:singleLine="true"
+            android:textColor="@color/gray_31"
+            android:textSize="@dimen/x28" />
+
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/money"
+            android:layout_marginStart="@dimen/x20"
+            android:layout_toEndOf="@+id/img"
+            android:text="299条评论 97%好评"
+            android:textColor="@color/grey_2"
+            android:textSize="@dimen/x26" />
+
+        <TextView
+            android:id="@+id/shopName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/comment"
+            android:layout_marginStart="@dimen/x20"
+            android:layout_marginTop="@dimen/x10"
+            android:layout_marginBottom="@dimen/x10"
+            android:layout_toEndOf="@+id/img"
+            android:singleLine="true"
+            android:text="京东自营旗舰店"
+            android:textColor="@color/black"
+            android:textSize="@dimen/x30" />
+
+
+        <View
+            android:layout_toEndOf="@+id/img"
+            android:layout_alignParentBottom="true"
+            android:background="@color/activity_background"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x2"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
