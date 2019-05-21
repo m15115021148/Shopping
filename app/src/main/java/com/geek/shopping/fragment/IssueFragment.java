@@ -1,5 +1,6 @@
 package com.geek.shopping.fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,6 +10,7 @@ import com.geek.shopping.adapter.IssueAdapter;
 import com.geek.shopping.application.MyApplication;
 import com.geek.shopping.config.ConfigUtil;
 import com.geek.shopping.database.entity.ProductModel;
+import com.geek.shopping.ui.IssueDetailActivity;
 import com.geek.shopping.view.GlideImageLoader;
 import com.geek.shopping.view.recyclerview.HeaderAndFooterWrapper;
 import com.youth.banner.Banner;
@@ -108,6 +110,8 @@ public class IssueFragment extends BaseFragment implements IssueAdapter.OnIssueC
 
     @Override
     public void onClickListener(int position) {
-
+        Intent intent = new Intent(getContext(), IssueDetailActivity.class);
+        intent.putExtra("ProductModel",mAdapter.getData().get(position));
+        startActivity(intent);
     }
 }
