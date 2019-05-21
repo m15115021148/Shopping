@@ -58,7 +58,7 @@ public class SplashActivity extends BaseActivity implements Runnable{
             startActivity(intent);
             finish();
         }else {
-            Intent intent = new Intent(this,HomePagerActivity.class);
+            Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
             finish();
         }

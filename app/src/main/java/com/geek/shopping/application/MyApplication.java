@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import com.geek.shopping.R;
 import com.geek.shopping.database.DBAccount;
 import com.geek.shopping.database.DBIssue;
+import com.geek.shopping.database.entity.UserModel;
 import com.geek.shopping.log.LogUtil;
 
 import java.io.UnsupportedEncodingException;
@@ -25,6 +26,8 @@ public class MyApplication extends Application {
     public int screenHeight = 0;
     public DBAccount mDbUser;
     public DBIssue mDbIssue;
+
+    public UserModel mUserModel;
 
     @Override
     public void onCreate() {

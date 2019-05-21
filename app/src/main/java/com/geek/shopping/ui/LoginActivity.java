@@ -202,7 +202,7 @@ public class LoginActivity extends BaseActivity {
         PreferencesUtil.setStringData(getApplicationContext(), ConfigUtil.KEY_PHONE,phone);
         PreferencesUtil.setStringData(getApplicationContext(),ConfigUtil.KEY_PASSWORD,password);
         PreferencesUtil.isFirst(getApplicationContext(),ConfigUtil.KEY_LOGIN_FIRST,true);
-        Intent intent = new Intent(this,HomePagerActivity.class);
+        Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
         finish();
         return "登陆成功";

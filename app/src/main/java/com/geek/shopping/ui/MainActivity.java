@@ -1,6 +1,7 @@
 package com.geek.shopping.ui;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -14,9 +15,12 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.geek.shopping.R;
+import com.geek.shopping.application.MyApplication;
+import com.geek.shopping.config.ConfigUtil;
 import com.geek.shopping.fragment.DataFragment;
 import com.geek.shopping.fragment.IssueFragment;
 import com.geek.shopping.fragment.MySelfFragment;
+import com.geek.shopping.util.PreferencesUtil;
 import com.geek.shopping.util.ToastUtil;
 
 import butterknife.BindView;
@@ -53,6 +57,20 @@ public class MainActivity extends BaseActivity {
         switchFragment(mIssueFragment);
 
         requestPermission();
+
+        String telPhone = PreferencesUtil.getStringData(this, ConfigUtil.KEY_PHONE);
+
+        MyApplication.getInstance().mUserModel = MyApplication.getInstance().mDbUser.getUserData(telPhone);
+
+        if (MyApplication.getInstance().mUserModel == null){
+            Intent intent = new Intent(this,LoginActivity.class);
+            startActivity(intent);
+            finish();
+            return;
+        }else {
+            ConfigUtil.USER_ID = MyApplication.getInstance().mUserModel.getUserId();
+        }
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
