@@ -67,6 +67,8 @@ public class IssueFragment extends BaseFragment implements IssueAdapter.OnIssueC
         List<ProductModel> list = MyApplication.getInstance().mDbIssue.getUserData(ConfigUtil.USER_ID);
 
         if (list != null && list.size()>0){
+            initBanner();
+
             if (mBanner != null){
                 mBanner.setImages(getBannerData(list));
                 mBanner.start();
