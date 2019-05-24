@@ -55,13 +55,13 @@ public class IssueDetailActivity extends BaseActivity {
     private DecimalFormat df = new DecimalFormat("0.#");
 
 
-    public static final String PARTNER = "";
+    public static final String PARTNER = "2019052465363234";
 
     // 商户收款账号
     public static final String SELLER = "";
 
     // 商户私钥，pkcs8格式
-    public static final String RSA_PRIVATE = "";
+    public static final String RSA_PRIVATE = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiDCzB8FyZI2pM16yb+LHF+WX4aTzdiWOO6kKjduO3nqlqCEtEeOYrkWQ42w42L/RYDsqZ+3fAU/s4Nd3T2bm6BIieGIvrB4iR2Hy7SN1O4a2oFRSFSZHGhyJLziV8WXLM6Eqzk4BRHSJhIi2JL3FWZb/FAYoZAbgOmlnl2iJZwX5ezYTkfZkSuZBWcpZXjfBx4Ep7RrPLDDZcYm2KSOaQ6401+zDDKCuNNQQUmlvSPM56P/sVnJwVO1XiJh/JWwhOyqJB7fpAHPdYyeL019IfUSXQDn4t2b4M73u1NYaGQfxK5+R1Z7cGstDIXkpD5Em0BZ0L9w4Cjux2+7GIOgN7wIDAQAB";
 
     private static final int SDK_PAY_FLAG = 1;
 

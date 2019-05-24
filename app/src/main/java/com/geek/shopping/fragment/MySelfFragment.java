@@ -13,7 +13,9 @@ import com.geek.shopping.database.entity.ProductModel;
 import com.geek.shopping.database.entity.UserModel;
 import com.geek.shopping.ui.AboutActivity;
 import com.geek.shopping.ui.AccountActivity;
+import com.geek.shopping.ui.AddressActivity;
 import com.geek.shopping.ui.MyIssueActivity;
+import com.geek.shopping.ui.OrderActivity;
 import com.geek.shopping.util.ImageUtil;
 import com.geek.shopping.util.PreferencesUtil;
 import com.geek.shopping.util.ToastUtil;
@@ -85,10 +87,13 @@ public class MySelfFragment extends BaseFragment implements View.OnClickListener
             startActivity(intent);
         }
         if (v == mReList.get(1)){
-            ToastUtil.showShort(getContext(),"开发中");
+            Intent intent = new Intent(getContext(), OrderActivity.class);
+            startActivity(intent);
         }
         if (v == mReList.get(2)){
             ToastUtil.showShort(getContext(),"开发中");
+//            Intent intent = new Intent(getContext(), AddressActivity.class);
+//            startActivity(intent);
         }
         if (v == mReList.get(3)){
             Intent intent = new Intent(getContext(), AboutActivity.class);

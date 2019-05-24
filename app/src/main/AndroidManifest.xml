@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
@@ -21,7 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.IssueDetailActivity"></activity>
+        <activity android:name=".ui.AddressAddActivity"></activity>
+        <activity android:name=".ui.AddressActivity" />
+        <activity android:name=".ui.OrderActivity" />
+        <activity android:name=".ui.IssueDetailActivity" />
         <activity android:name=".ui.AccountActivity" />
         <activity
             android:name=".ui.SplashActivity"
@@ -83,7 +86,6 @@
             android:exported="false"
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-
     </application>
 
 </manifest>
