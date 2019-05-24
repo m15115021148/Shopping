@@ -7,25 +7,37 @@
 
 
     <RelativeLayout
-        android:background="@color/colorPrimary"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x120">
+        android:layout_height="@dimen/x100"
+        android:background="@color/colorPrimary">
 
         <TextView
-            android:layout_centerInParent="true"
             android:id="@+id/title"
-            android:textSize="@dimen/x35"
-            android:textColor="@color/white"
-            android:text="@string/app_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/app_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x35" />
+
+
+        <TextView
+            android:id="@+id/issue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x40"
+            android:text="发布"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x30" />
 
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:overScrollMode="never"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:overScrollMode="never" />
 
 </LinearLayout>

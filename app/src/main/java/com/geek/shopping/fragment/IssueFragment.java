@@ -36,6 +36,8 @@ public class IssueFragment extends BaseFragment implements IssueAdapter.OnIssueC
     private IssueAdapter mAdapter;
     private HeaderAndFooterWrapper mWrapper;
     private Banner mBanner;
+    @BindView(R.id.issue)
+    public TextView mIssue;
 
     @Override
     protected int setContentView() {
@@ -50,6 +52,14 @@ public class IssueFragment extends BaseFragment implements IssueAdapter.OnIssueC
         mWrapper = new HeaderAndFooterWrapper(mAdapter);
 
         initBanner();
+
+        mIssue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), IssueActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -95,6 +105,7 @@ public class IssueFragment extends BaseFragment implements IssueAdapter.OnIssueC
     }
 
     private void initBanner(){
+        mWrapper.removeHeaderView();
 
         View view = getLayoutInflater().inflate(R.layout.issue_header_layout,null);
 
